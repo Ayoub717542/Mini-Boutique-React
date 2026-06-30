@@ -8,36 +8,43 @@ function App() {
   const [cart, setCart] = useState([]);
 
   function handleDeleteProduct(productId) {
-  const updateProducts = Products.filter(
-    (product) => product.id !== productId
-  );
+    let updateProducts =[]
+    for(let i = 0; i<Products.length; i++){
+      if(Products[i].id !== productId){
+        updatePr-oducts.push(Products[i]);
+      }
+    }
   setProducts(updateProducts);
 }
 
 function handleAddToCart(product) {
-  const exist = cart.find(
-    (item) => item.id === product.id
-  );
-
-  if (exist) {
-    exist.quantity += 1;
-
-    setCart([...cart]);
-  } else {
-    setCart([
-      ...cart,
-      { ...product, quantity: 1 }
-    ]);
-  }
+    let newCart = cart.slice();
+    let exist =newCart.find(function(item){
+      return item.id ===product.id;
+    });
+    if(exist){
+      exist.quantity = exist.quantity+1;
+      exist.totalAmount = exist.quantity*exist.price;
+    }else{
+    let newProduct ={
+      id: product.id,
+      name: product.name,
+      type: product.type,
+      price: product.price,
+      quantity :1,
+      totalAmount:product.price
+ };
+  newCart.push(newProduct);
+    }
+setCart(newCart);
 }
   return (
     <>
-     <Header />
+     <Header cart={cart} />
 
        <div>
         <h1>My Shop</h1>
-        <ProductList products={Products} onDeleteProduct={handleDeleteProduct}  onAddToCart={handleAddToCart}
- />
+        <ProductList products={Products} onDeleteProduct={handleDeleteProduct}  onAddToCart={handleAddToCart}/>
       </div>
 
     <Footer />

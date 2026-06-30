@@ -9,7 +9,7 @@ return(
     <p>{product.type} </p>
    <p>{product.price.toFixed(2)} MAD </p>
     <button onClick={() => onDeleteProduct(product.id)}>Delete</button> 
-   <button className="btn_cart"  onClick={() => onAddToCart(product)}>
+    <button className="btn_cart"  onClick={() => onAddToCart(product)}>
         Add to Cart
     </button>
     </div>
