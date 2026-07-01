@@ -8,13 +8,7 @@ function App() {
   const [cart, setCart] = useState([]);
 
   function handleDeleteProduct(productId) {
-    let updateProducts =[]
-    for(let i = 0; i<Products.length; i++){
-      if(Products[i].id !== productId){
-        updatePr-oducts.push(Products[i]);
-      }
-    }
-  setProducts(updateProducts);
+  setProducts(products => products.filter(product => product.id !== productId));
 }
 
 function handleAddToCart(product) {
@@ -38,12 +32,15 @@ function handleAddToCart(product) {
     }
 setCart(newCart);
 }
+
+function deleteProduct(id){
+  setCart(cart.filter((item) => item.id !==id));
+}
   return (
     <>
-     <Header cart={cart} />
+     <Header cart={cart} deleteProduct={deleteProduct}/>
 
        <div>
-        <h1>My Shop</h1>
         <ProductList products={Products} onDeleteProduct={handleDeleteProduct}  onAddToCart={handleAddToCart}/>
       </div>
 
