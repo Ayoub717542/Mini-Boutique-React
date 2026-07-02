@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard"
 
 function ProductList({products ,onDeleteProduct,onAddToCart  }){
     const [selectedCategory, setSelectedCategory] = useState("all")
-  function handleFilterClick(category) {
+    function handleFilterClick(category) {
     setSelectedCategory(category)
   }
     let filteredProducts = products

@@ -26,18 +26,31 @@ if(dark){
                 {
                     showCart &&(
                 <div className="cart-box"
-                 onClick={(e) => e.stopPropagation()}> 
-                    <h3>My Cart</h3>
-                    {cart.map((item) => (
+                 onClick={(e) => e.stopPropagation()} >
+                   {cart.length===0 ? 
+                   (
+                     <div className="empty-cart-container">
+                     <img className="emptycart" src="./empty-cart.png" alt="Empty cart" />
+                     </div>
+                    ):(
+                        cart.map((item) => (
                         <div key={item.id} className="cart-item">
-                            <div className="card_info">
+                            <div>
+                                <img src={item.image}/>
+                            </div>
+                        <div>
                         <p>{item.name}</p>
                         <p>Quantity: {item.quantity}</p>
                         <p>Amount: {item.totalAmount} MAD</p>
-                            </div>
-                        <i className="x-close fa fa-times-circle" onClick={() => deleteProduct(item.id)}></i>
                         </div>
-                    ))}
+                            <div>
+                                <i className="x-close fa fa-times-circle" onClick={() => deleteProduct(item.id)}></i>
+                            </div> 
+                        </div>
+                    ))
+                   )}
+                
+            
                 </div>
             )}  
             <i className="fa-solid fa-cart-shopping"></i> {totalProducts}

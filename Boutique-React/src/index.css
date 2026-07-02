@@ -7,10 +7,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 4rem;
-    background: var(--white);
+    padding: 0.5rem 4rem;
+    background: rgba(0, 0, 0, 0.90);
+    color: white;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -87,29 +87,34 @@ cursor:pointer;
   top: 10vh;
   width: 18rem;
   background: white;
+  color: black;
   padding: 1rem;
   border-radius: 1rem;
-  border: solid 1px darkgray;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-height:25rem;
-  overflow-y:auto;
+  border: 0.08rem solid darkgray;
+  max-height: 25rem;
+  overflow-y: auto;
+}
+.cart-item img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  display: block;
 }
 
+
 .cart-item {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
   border-bottom: 0.08rem solid #eee;
   gap: 0.5rem;
   padding: 1rem 0;
+}
+.cart-item i{
+ align-self: start;
+}
 
-}
-.cart-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
 
 .CartPannel {
   cursor: pointer;
@@ -117,11 +122,16 @@ cursor:pointer;
   align-items: center;
   gap: 1rem;
 }
+.empty-cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 1rem;
+}
 
 .x-close {
   cursor: pointer;
 }
-
 
     .cards{
       display: flex;
@@ -171,7 +181,12 @@ cursor:pointer;
     font-weight: bold;
     color: #e67e22;
 }
-
+.card_btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
 .btn_cart {
     padding: 0.8rem 1.2rem;
     border: none;
@@ -244,15 +259,6 @@ cursor:pointer;
 .footer_bottom {
   text-align: center;
 }
-
-
-
-
-
-
-
-
-
 
 
 
