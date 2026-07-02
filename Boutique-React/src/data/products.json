@@ -68,5 +68,75 @@
     "price": 11.0,
     "type": "Accessoires",
     "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80"
+  },
+  {
+    "id": 11,
+    "name": "Vase en céramique",
+    "price": 21.0,
+    "type": "Maison",
+    "image": "https://picsum.photos/id/106/400/400"
+  },
+  {
+    "id": 12,
+    "name": "Baskets blanches",
+    "price": 45.0,
+    "type": "Chaussures",
+    "image": "https://picsum.photos/id/21/400/400"
+  },
+  {
+    "id": 13,
+    "name": "Sandales en cuir",
+    "price": 32.0,
+    "type": "Chaussures",
+    "image": "https://picsum.photos/id/103/400/400"
+  },
+  {
+    "id": 14,
+    "name": "Bottes en daim",
+    "price": 58.0,
+    "type": "Chaussures",
+    "image": "https://picsum.photos/id/26/400/400"
+  },
+  {
+    "id": 15,
+    "name": "Lunettes de soleil",
+    "price": 16.5,
+    "type": "Accessoires",
+    "image": "https://picsum.photos/id/96/400/400"
+  },
+  {
+    "id": 16,
+    "name": "Montre vintage",
+    "price": 39.9,
+    "type": "Accessoires",
+    "image": "https://picsum.photos/id/338/400/400"
+  },
+  {
+    "id": 17,
+    "name": "Pull en laine",
+    "price": 34.0,
+    "type": "Vêtements",
+    "image": "https://picsum.photos/id/318/400/400"
+  },
+  {
+    "id": 18,
+    "name": "Jean droit",
+    "price": 29.9,
+    "type": "Vêtements",
+    "image": "https://picsum.photos/id/342/400/400"
+  },
+  {
+    "id": 19,
+    "name": "Coussin décoratif",
+    "price": 14.0,
+    "type": "Maison",
+    "image": "https://picsum.photos/id/119/400/400"
+  },
+  {
+    "id": 20,
+    "name": "Agenda 2026",
+    "price": 10.5,
+    "type": "Papeterie",
+    "image": "https://picsum.photos/id/24/400/400"
   }
 ]

@@ -1,40 +1,44 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import ProductCard from "./ProductCard"
+import ProductCard from "./ProductCard";
 
-function ProductList({products ,onDeleteProduct,onAddToCart  }){
-    const [selectedCategory, setSelectedCategory] = useState("all")
-    function handleFilterClick(category) {
-    setSelectedCategory(category)
+function ProductList({ products, onDeleteProduct, onAddToCart }) {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  function handleFilterClick(category) {
+    setSelectedCategory(category);
   }
-    let filteredProducts = products
-if(selectedCategory  !== "all")
-{
-filteredProducts = filteredProducts.filter((p) => p.type === selectedCategory)
-}
-    return(
+  let filteredProducts = products;
+  if (selectedCategory !== "all") {
+    filteredProducts = filteredProducts.filter(
+      (p) => p.type === selectedCategory,
+    );
+  }
+  return (
     <div className="filter-container">
       <select onChange={(e) => handleFilterClick(e.target.value)}>
         <option value="all">All</option>
         <option value="Vetements">Vetements</option>
-        <option value="Chaussures" >Chaussures</option>
-        <option value="Accessoires" >Accessoires</option>
-        <option value="Maison" >Maison</option>
+        <option value="Chaussures">Chaussures</option>
+        <option value="Accessoires">Accessoires</option>
+        <option value="Maison">Maison</option>
       </select>
-        <div className="cards">
-          
-        {
-          filteredProducts.map((p)=> (
-            <ProductCard 
-            key={p.id}
-            product={p}
-            onDeleteProduct={onDeleteProduct}
-            onAddToCart={onAddToCart}
+      <div className="cards">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((p) => (
+            <ProductCard
+              key={p.id}
+              product={p}
+              onDeleteProduct={onDeleteProduct}
+              onAddToCart={onAddToCart}
             />
           ))
-        }
+        ) : (
+          <div className="notFound">
+            <h3>No products found</h3>
+          </div>
+        )}
       </div>
     </div>
-    )
+  );
 }
-export default ProductList
+export default ProductList;
