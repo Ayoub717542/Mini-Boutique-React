@@ -1,5 +1,8 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Header from "./Components/Header.jsx";
 import products from "./data/products.json";
+import Home from "./views/Home.jsx"
+import AddProduct from "./views/AddProduct";
 import ProductList from "./Components/ProductList.jsx";
 import Footer from "./Components/Footer.jsx";
 import { useState } from "react";
@@ -43,25 +46,33 @@ function App() {
     product.name.toLocaleLowerCase().includes(searchInput.toLowerCase()),
   );
 
+  function addNewProduct(newProduct){
+    setProducts((prevProducts)=>[...prevProducts,newProduct])
+  }
   return (
-    <>
-      <Header
-        cart={cart}
-        deleteProduct={deleteProduct}
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-      />
+       <BrowserRouter>
+       <Routes>
+        <Route path="/" element=
+        {
+        <Home
+            cart={cart}
+            deleteProduct={deleteProduct}
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            filterProducts={filterProducts}
+            handleDeleteProduct={handleDeleteProduct}
+            handleAddToCart={handleAddToCart}>
+           
+        </Home>} >
+        </Route>
+        <Route path="/AddProduct" element=
+        {
+          <AddProduct addNewProduct={addNewProduct}/>
+        }>
 
-      <div>
-        <ProductList
-          products={filterProducts}
-          onDeleteProduct={handleDeleteProduct}
-          onAddToCart={handleAddToCart}
-        />
-      </div>
-
-      <Footer />
-    </>
+        </Route>
+       </Routes>
+       </BrowserRouter>
   );
 }
 export default App;
