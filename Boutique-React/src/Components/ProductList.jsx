@@ -36,7 +36,7 @@ function ProductList({ products, onDeleteProduct, onAddToCart }) {
           <div className="notFound">
             <h3>No products found</h3>
           </div>
-          
+            
         )}
       </div>
     </div>

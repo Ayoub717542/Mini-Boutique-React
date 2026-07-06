@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Header from '../Components/header';
 import ProductList from '../Components/ProductList';
 import Footer from '../Components/Footer';
@@ -14,14 +14,14 @@ function Home(
 }){
     return(
         <>
-        <Header
-        cart={cart}
-        deleteProduct={deleteProduct}
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-      />
-
+    <div className="home-section">
+    <Link to="/addProduct">
+    <button>Add New Item</button>
+    </Link>
+    
+    </div>
       <div>
+        
         <ProductList
           products={filterProducts}
           onDeleteProduct={handleDeleteProduct}
@@ -29,7 +29,7 @@ function Home(
         />
       </div>
 
-    <Footer />
+  
         </>
 
     )

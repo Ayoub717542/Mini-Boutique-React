@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Header from "./Components/Header.jsx";
 import products from "./data/products.json";
 import Home from "./views/Home.jsx"
 import AddProduct from "./views/AddProduct";
-import ProductList from "./Components/ProductList.jsx";
-import Footer from "./Components/Footer.jsx";
 import { useState } from "react";
+import Header from "./Components/header.jsx";
+import Footer from "./Components/Footer.jsx";
 function App() {
   const [Products, setProducts] = useState(products);
   const [cart, setCart] = useState([]);
@@ -51,6 +50,12 @@ function App() {
   }
   return (
        <BrowserRouter>
+         <Header
+    cart={cart}
+    deleteProduct={deleteProduct}
+    searchInput={searchInput}
+    setSearchInput={setSearchInput}
+  />
        <Routes>
         <Route path="/" element=
         {
@@ -65,13 +70,14 @@ function App() {
            
         </Home>} >
         </Route>
-        <Route path="/AddProduct" element=
+        <Route path="/addProduct" element=
         {
           <AddProduct addNewProduct={addNewProduct}/>
         }>
 
         </Route>
        </Routes>
+         <Footer />
        </BrowserRouter>
   );
 }

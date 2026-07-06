@@ -13,6 +13,8 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
 
   return (
     <header>
+      <Link to="/">Home</Link>
+      <Link to="/add-product">Add Product</Link>
       <div className="header-top">
         <h1>
           <i className="fa-solid fa-shop"></i> My Boutique

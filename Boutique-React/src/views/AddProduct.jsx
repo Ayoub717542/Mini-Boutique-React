@@ -15,13 +15,49 @@ const {register ,handleSubmit}=useForm();
    }
 
    return(
-    <form onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder="Name..." {...register("name")} />
-        <input placeholder="Price..." {...register("price")} />
-        <input placeholder="Type..." {...register("type")} />
-        <input placeholder="Image URL..." {...register("image")} />
-        <button type="submit">Add Product</button>
-    </form>
+<form className="add-product-container" onSubmit={handleSubmit(onSubmit)}>
+  <h2>Add New Product</h2>
+
+  <div className="form-group">
+    <label>Product Name</label>
+    <input
+      type="text"
+      placeholder="Enter product name"
+      {...register("name")}
+    />
+  </div>
+
+  <div className="form-group">
+    <label>Price</label>
+    <input
+      type="number"
+      placeholder="Enter price"
+      {...register("price")}
+    />
+  </div>
+
+  <div className="form-group">
+    <label>Category</label>
+    <input
+      type="text"
+      placeholder="Enter category"
+      {...register("type")}
+    />
+  </div>
+
+  <div className="form-group">
+    <label>Image URL</label>
+    <input
+      type="text"
+      placeholder="https://example.com/image.jpg"
+      {...register("image")}
+    />
+  </div>
+
+  <button type="submit" className="add-btn">
+    Add Product
+  </button>
+</form>
    )
 }
 export default AddProduct;
