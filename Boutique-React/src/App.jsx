@@ -2,11 +2,12 @@ import Header from "./Components/Header.jsx";
 import products from "./data/products.json";
 import ProductList from "./Components/ProductList.jsx";
 import Footer from "./Components/Footer.jsx";
-import { useState } from "react";
+import { use, useState } from "react";
 function App() {
   const [Products, setProducts] = useState(products);
   const [cart, setCart] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+
 
   function handleDeleteProduct(productId) {
     setProducts((products) =>
@@ -42,6 +43,8 @@ function App() {
   const filterProducts = Products.filter((product) =>
     product.name.toLocaleLowerCase().includes(searchInput.toLowerCase()),
   );
+
+
 
   return (
     <>

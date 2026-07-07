@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SearchBar from "./SearchBar";
 function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
   const [showCart, setShowCart] = useState(false);
   const [open, setOpen] = useState(false);
@@ -18,14 +19,10 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
           <i className="fa-solid fa-shop"></i> My Boutique
         </h1>
 
-        <input
-          type="text"
-          id="search_input"
-          placeholder="Search products..."
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-        />
-
+        <SearchBar
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+      />
         <button
           className="nav-toggle"
           onClick={() => setOpen(!open)}
