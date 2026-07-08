@@ -1,4 +1,15 @@
+import { useState } from "react";
+
 function ProductCard({ product, onDeleteProduct, onAddToCart }) {
+  const [added,setAdded]=useState(false);
+  function handleAdd(){
+      onAddToCart(product)
+      setAdded(true);
+
+      setTimeout(() => {
+        setAdded(false)
+      }, 1000);
+  }
   return (
     <div className="card_content">
       <i
@@ -9,8 +20,9 @@ function ProductCard({ product, onDeleteProduct, onAddToCart }) {
       <h3>{product.name}</h3>
       <p>{product.type} </p>
       <p>{product.price.toFixed(2)} MAD</p>
-      <button className="btn_cart" onClick={() => onAddToCart(product)}>
-        Add to Cart
+      <button  className={added ? "btn_cart added" : "btn_cart"}
+      onClick={handleAdd} >
+     {added ? "added successfully" : "Add to Cart"}
       </button>
     </div>
   );

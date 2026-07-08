@@ -218,7 +218,14 @@ nav a:hover {
   cursor: pointer;
   transition: 0.3s;
 }
+.btn_cart {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
 
+.btn_cart.added {
+  background-color: green;
+}
 .btn_cart:hover {
   opacity: 0.85;
 }
@@ -326,7 +333,10 @@ body.dark-mode .btn_cart {
   background: var(--gold);
   color: var(--bg);
 }
-
+body.dark-mode .btn_cart.added {
+  background: green;
+  color: white  ;
+}
 body.dark-mode select {
   background: var(--card);
   color: var(--text);
