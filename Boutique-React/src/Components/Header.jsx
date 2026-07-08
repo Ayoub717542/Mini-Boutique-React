@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
   const [showCart, setShowCart] = useState(false);
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
   return (
     <header>
       <Link to="/">Home</Link>
-      <Link to="/add-product">Add Product</Link>
+      <Link to="/addProduct">Add Product</Link>
       <div className="header-top">
         <h1>
           <i className="fa-solid fa-shop"></i> My Boutique
