@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-
+import { useNavigate } from "react-router-dom";
 function AddProduct({addNewProduct}){
+  const navigate= useNavigate();
 const {register ,handleSubmit}=useForm();
    function onSubmit(data){
-      console.log("Form submitted:", data);     
     const newProduct ={
         id : Date.now(),
         name : data.name,
@@ -12,6 +12,7 @@ const {register ,handleSubmit}=useForm();
         image: data.image
     };
     addNewProduct(newProduct);
+    navigate("/");
    }
 
    return(
@@ -54,7 +55,7 @@ const {register ,handleSubmit}=useForm();
     />
   </div>
 
-  <button type="submit" className="add-btn">
+  <button type="submit" className="add-btn" >
     Add Product
   </button>
 </form>
