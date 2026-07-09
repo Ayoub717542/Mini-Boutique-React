@@ -1,28 +1,27 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
   const [showCart, setShowCart] = useState(false);
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(localStorage.getItem("theme") === "dark");
+
   if (dark) {
     document.body.classList.add("dark-mode");
   }
+
   let totalProducts = 0;
   for (let i = 0; i < cart.length; i++) {
-    totalProducts = totalProducts + cart[i].quantity;
+    totalProducts += cart[i].quantity;
   }
 
   return (
     <header>
-
-      <Link to="/">Home</Link>
-      <Link to="/addProduct">Add Product</Link>
-      <Link to="/about">About</Link>
-      <Link to="/contact">Contact</Link>
-
       <div className="header-top">
-        <h1>
-          <i className="fa-solid fa-shop"></i> My Boutique
+        <h1 className="logo">
+          <Link to="/">
+            <i className="fa-solid fa-shop"></i> My Boutique
+          </Link>
         </h1>
 
         <input
@@ -36,22 +35,33 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
         <button
           className="nav-toggle"
           onClick={() => setOpen(!open)}
-          aria-label="Ouvrir le menu"
-          aria-expanded="false"
+          aria-label="Open Menu"
         >
           <i className="fa-solid fa-bars"></i>
         </button>
       </div>
+
       <nav className={open ? "active" : ""}>
-        <ul>
+        <div className="nav-links">
+          <Link to="/">Home</Link>
+          <Link to="/addProduct">Add Product</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
+        </div>
+
+        <div className="nav-icons">
           <div
             className="CartPannel"
-            onClick={function () {
-              setShowCart(!showCart);
-            }}
+            onClick={() => setShowCart(!showCart)}
           >
+            <i className="fa-solid fa-cart-shopping"></i>
+            <span>{totalProducts}</span>
+
             {showCart && (
-              <div className="cart-box" onClick={(e) => e.stopPropagation()}>
+              <div
+                className="cart-box"
+                onClick={(e) => e.stopPropagation()}
+              >
                 {cart.length === 0 ? (
                   <div className="empty-cart-container">
                     <img
@@ -64,17 +74,17 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
                 ) : (
                   cart.map((item) => (
                     <div key={item.id} className="cart-item">
-                      <div>
-                        <img src={item.image} alt={item.name} />
-                      </div>
-                      <div>
+                      <img src={item.image} alt={item.name} />
+
+                      <div className="cart-info">
                         <p>{item.name}</p>
                         <p>Quantity: {item.quantity}</p>
                         <p>Amount: {item.totalAmount} MAD</p>
                       </div>
+
                       <div className="close_col">
                         <i
-                          className="x-close fa fa-times-circle"
+                          className="fa fa-times-circle x-close"
                           onClick={() => deleteProduct(item.id)}
                         ></i>
                       </div>
@@ -83,25 +93,22 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
                 )}
               </div>
             )}
-            <i className="fa-solid fa-cart-shopping"></i> {totalProducts}
           </div>
-          <li>
-            <a
-              href="#"
-              className="theme-toggle"
-              onClick={(e) => {
-                e.preventDefault();
-                setDark(!dark);
-                document.body.classList.toggle("dark-mode", !dark);
-                localStorage.setItem("theme", !dark ? "dark" : "light");
-              }}
-            >
-              <i className={`fa-solid  ${dark ? "fa-sun" : "fa-moon"}`}></i>
-            </a>
-          </li>
-        </ul>
+
+          <button
+            className="theme-toggle"
+            onClick={() => {
+              setDark(!dark);
+              document.body.classList.toggle("dark-mode", !dark);
+              localStorage.setItem("theme", !dark ? "dark" : "light");
+            }}
+          >
+            <i className={`fa-solid ${dark ? "fa-sun" : "fa-moon"}`}></i>
+          </button>
+        </div>
       </nav>
     </header>
   );
 }
+
 export default Header;

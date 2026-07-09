@@ -7,6 +7,7 @@ import Header from "./Components/header.jsx";
 import Footer from "./Components/Footer.jsx";
 import About from "./views/About.jsx";
 import Contact from "./views/Contact.jsx";
+import NotFound from "./views/NotFound.jsx";
 function App() {
   const [Products, setProducts] = useState(products);
   const [cart, setCart] = useState([]);
@@ -79,6 +80,7 @@ function App() {
         </Route>
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
+         <Route path="*" element={<NotFound />} />  
        </Routes>
          <Footer />
        </BrowserRouter>

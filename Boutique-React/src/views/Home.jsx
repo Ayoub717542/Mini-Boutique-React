@@ -15,9 +15,6 @@ function Home(
     return(
         <>
     <div className="home-section">
-    <Link to="/addProduct">
-    <button>Add New Item</button>
-    </Link>
     
     </div>
       <div>
