@@ -5,5 +5,4 @@ function SearchBar({ searchTerm, onSearchChange }) {
     </div>
   )
 }
-
 export default SearchBar

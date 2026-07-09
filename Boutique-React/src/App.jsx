@@ -5,6 +5,8 @@ import AddProduct from "./views/AddProduct";
 import { useState } from "react";
 import Header from "./Components/header.jsx";
 import Footer from "./Components/Footer.jsx";
+import About from "./views/About.jsx";
+import Contact from "./views/Contact.jsx";
 function App() {
   const [Products, setProducts] = useState(products);
   const [cart, setCart] = useState([]);
@@ -74,8 +76,9 @@ function App() {
         {
           <AddProduct addNewProduct={addNewProduct}/>
         }>
-
         </Route>
+        <Route path="/about" element={<About/>} />
+        <Route path="/contact" element={<Contact/>} />
        </Routes>
          <Footer />
        </BrowserRouter>
