@@ -5,7 +5,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer_content">
         <div className="footer_brand">
-          <h2>Ma Boutique</h2>
+          <h2>My Boutique</h2>
           <p>Des produits de qualité, sélectionnés avec soin pour vous.</p>
         </div>
 

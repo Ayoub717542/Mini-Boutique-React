@@ -16,6 +16,7 @@ function ProductList({ products, onDeleteProduct, onAddToCart }) {
   return (
     <div className="filter-container">
       <select onChange={(e) => handleFilterClick(e.target.value)}>
+        <option value="">Select By Type...</option>
         <option value="all">All</option>
         <option value="Vetements">Vetements</option>
         <option value="Chaussures">Chaussures</option>

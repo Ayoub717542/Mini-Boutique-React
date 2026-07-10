@@ -24,6 +24,8 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
           </Link>
         </h1>
 
+        
+
         <button
           className="nav-toggle"
           onClick={() => setOpen(!open)}
@@ -34,7 +36,6 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
       </div>
 
       <nav className={open ? "active" : ""}>
-        
         <input
           type="text"
           id="search_input"
@@ -42,21 +43,22 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        
         <div className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/addProduct">Add Product</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/" onClick={()=> setOpen(false)}>Home</Link>
+          <Link className="addProduct" to="/addProduct" onClick={()=> setOpen(false)}>Add Product</Link>
+          <Link to="/about" onClick={()=> setOpen(false)}>About</Link>
+          <Link to="/contact" onClick={()=> setOpen(false)}>Contact</Link>
         </div>
-
         <div className="nav-icons">
           <div
             className="CartPannel"
             onClick={() => setShowCart(!showCart)}
           >
-            <i className="fa-solid fa-cart-shopping"></i>
-            <span>{totalProducts}</span>
+            <i className="fa-solid fa-cart-shopping cart-icon">
+            {totalProducts > 0 && (
+            <span className="cart-number">{totalProducts}</span>
+            )}
+            </i>
 
             {showCart && (
               <div
