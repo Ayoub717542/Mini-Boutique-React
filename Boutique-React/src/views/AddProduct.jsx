@@ -1,6 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import productSchema from "../validation/productSchema";
+
+
 function AddProduct({addNewProduct}){
+
+
   const navigate= useNavigate();
 const {register ,handleSubmit}=useForm();
    function onSubmit(data){
@@ -23,6 +28,7 @@ const {register ,handleSubmit}=useForm();
     <label>Product Name</label>
     <input
       type="text"
+      name="name"
       placeholder="Enter product name"
       {...register("name")}
     />
@@ -32,6 +38,7 @@ const {register ,handleSubmit}=useForm();
     <label>Price</label>
     <input
       type="number"
+      name="price"
       placeholder="Enter price"
       {...register("price")}
     />
@@ -41,6 +48,7 @@ const {register ,handleSubmit}=useForm();
     <label>Category</label>
     <input
       type="text"
+      name="category"
       placeholder="Enter category"
       {...register("type")}
     />
@@ -49,6 +57,7 @@ const {register ,handleSubmit}=useForm();
   <div className="form-group">
     <label>Image URL</label>
     <input
+    name="image"
       type="text"
       placeholder="https://example.com/image.jpg"
       {...register("image")}
