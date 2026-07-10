@@ -24,14 +24,6 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
           </Link>
         </h1>
 
-        <input
-          type="text"
-          id="search_input"
-          placeholder="Search products..."
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-        />
-
         <button
           className="nav-toggle"
           onClick={() => setOpen(!open)}
@@ -42,6 +34,15 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
       </div>
 
       <nav className={open ? "active" : ""}>
+        
+        <input
+          type="text"
+          id="search_input"
+          placeholder="Search products..."
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        
         <div className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/addProduct">Add Product</Link>
