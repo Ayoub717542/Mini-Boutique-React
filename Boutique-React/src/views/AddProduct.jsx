@@ -1,13 +1,19 @@
-import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import productSchema from "../validation/productSchema";
+import { Formik,Field,ErrorMessage,Form } from "formik";
+console.log(productSchema);
 
+const initialValues={
+  name:"",
+  price:"",
+  type:"",
+  image:""
+}
 
 function AddProduct({addNewProduct}){
 
+const navigate= useNavigate();
 
-  const navigate= useNavigate();
-const {register ,handleSubmit}=useForm();
    function onSubmit(data){
     const newProduct ={
         id : Date.now(),
@@ -21,53 +27,78 @@ const {register ,handleSubmit}=useForm();
    }
 
    return(
-<form className="add-product-container" onSubmit={handleSubmit(onSubmit)}>
+
+    <Formik  
+  initialValues={initialValues}
+  validationSchema={productSchema}
+  onSubmit={onSubmit}
+     >
+
+
+<Form className="add-product-container">
   <h2>Add New Product</h2>
 
   <div className="form-group">
     <label>Product Name</label>
-    <input
+    <Field
       type="text"
       name="name"
       placeholder="Enter product name"
-      {...register("name")}
     />
+    <ErrorMessage
+  name="name"
+  component="p"
+  className="error"
+/>
   </div>
 
   <div className="form-group">
     <label>Price</label>
-    <input
+    <Field
       type="number"
       name="price"
       placeholder="Enter price"
-      {...register("price")}
     />
+    <ErrorMessage
+  name="price"
+  component="p"
+  className="error"
+/>
   </div>
 
   <div className="form-group">
     <label>Category</label>
-    <input
+    <Field
       type="text"
-      name="category"
+      name="type"
       placeholder="Enter category"
-      {...register("type")}
     />
+    <ErrorMessage
+  name="type"
+  component="p"
+  className="error"
+/>
   </div>
 
   <div className="form-group">
     <label>Image URL</label>
-    <input
+    <Field
     name="image"
       type="text"
       placeholder="https://example.com/image.jpg"
-      {...register("image")}
     />
+    <ErrorMessage
+  name="image"
+  component="p"
+  className="error"
+/>
   </div>
 
   <button type="submit" className="add-btn" >
     Add Product
   </button>
-</form>
+</Form>
+    </Formik>
    )
 }
 export default AddProduct;
