@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import products from "./data/products.json";
 import Home from "./views/Home.jsx"
 import AddProduct from "./views/AddProduct";
@@ -8,6 +8,7 @@ import Footer from "./Components/Footer.jsx";
 import About from "./views/About.jsx";
 import Contact from "./views/Contact.jsx";
 import NotFound from "./views/NotFound.jsx";
+import ProductDetails from "./Components/ProductDetails.jsx";
 function App() {
   const [Products, setProducts] = useState(products);
   const [cart, setCart] = useState([]);
@@ -60,6 +61,7 @@ function App() {
     setSearchInput={setSearchInput}
   />
        <Routes>
+        <Route path="/product/:id" element={<ProductDetails products={products} />  }></Route>
         <Route path="/" element=
         {
         <Home

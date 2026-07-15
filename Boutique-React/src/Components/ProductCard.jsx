@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function ProductCard({ product, onDeleteProduct, onAddToCart }) {
   return (
     <div className="card_content">
@@ -12,6 +14,7 @@ function ProductCard({ product, onDeleteProduct, onAddToCart }) {
       <button className="btn_cart" onClick={() => onAddToCart(product)}>
         Add to Cart
       </button>
+      <Link to={`/product/${product.id}`}>view details</Link>
     </div>
   );
 }

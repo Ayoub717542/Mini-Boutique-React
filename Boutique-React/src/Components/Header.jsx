@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
   const [showCart, setShowCart] = useState(false);
@@ -44,10 +44,10 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <div className="nav-links">
-          <Link to="/" onClick={()=> setOpen(false)}>Home</Link>
+          <NavLink to="/" className={({isActive}) => (isActive ? "active" : "")} onClick={()=> setOpen(false)} >home</NavLink>
           <Link className="addProduct" to="/addProduct" onClick={()=> setOpen(false)}>Add Product</Link>
-          <Link to="/about" onClick={()=> setOpen(false)}>About</Link>
-          <Link to="/contact" onClick={()=> setOpen(false)}>Contact</Link>
+          <NavLink to="about" className={({isActive}) => (isActive ? "active " : "")} onClick={()=> setOpen(false)} >About</NavLink>
+          <NavLink to="/contact" onClick={({isActive})=>(isActive ? "active" : "")} onClick={()=> setOpen(false)} >Contact</NavLink>
         </div>
         <div className="nav-icons">
           <div
