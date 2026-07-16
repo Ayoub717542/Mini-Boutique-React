@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import productSchema from "../validation/productSchema";
-import { Formik,Field,ErrorMessage,Form } from "formik";
-console.log(productSchema);
+import {Formik , Field, ErrorMessage, Form } from "formik";
 
 const initialValues={
   name:"",
