@@ -32,8 +32,6 @@ const navigate= useNavigate();
   validationSchema={productSchema}
   onSubmit={onSubmit}
      >
-
-
 <Form className="add-product-container">
   <h2>Add New Product</h2>
 

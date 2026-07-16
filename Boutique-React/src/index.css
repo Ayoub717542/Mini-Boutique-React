@@ -42,6 +42,11 @@ header nav {
     
 
 }
+.active {
+  color: #d46f0a;
+  font-weight: bold;
+  text-decoration: underline;
+}
 .addProduct{
 background-color: #d46f0a;
 color: white;
@@ -324,6 +329,29 @@ nav a:hover {
     color: #222;
     margin-bottom: 10px;
 }
+.product_details {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.product_details img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product_details h1 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.product_details p {
+  margin: 5px 0;
+  color: #555;
+}
 
 .form-group {
     display: flex;
@@ -337,6 +365,11 @@ nav a:hover {
 .form-group input {
     padding: 0.7rem;
     border: 1px solid #ccc;
+}
+.error{
+  color: red;
+  font-size: small;
+  font-weight: bold;
 }
 
 .form-group input:focus {
@@ -489,11 +522,21 @@ body.dark-mode {
 
 body.dark-mode nav,
 body.dark-mode footer,
-body.dark-mode .cards {
+body.dark-mode .cards,
+body.dark-mode .add-product-container {
   background: var(--card);
 }
 
-body.dark-mode .card_content {
+body.dark-mode .add-product-container h2{
+  color: var(--text);
+}
+body.dark-mode .add-product-container .add-btn{
+  background: var(--text);
+  color: var(--card);
+}
+body.dark-mode .card_content 
+, body.dark-mode .add-product-container
+{
   background: var(--card);
   color: var(--text);
   border: 0.1rem solid var(--border);
