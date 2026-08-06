@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import products from "./data/products.json";
+<<<<<<< HEAD
 import Home from "./views/Home.jsx"
 import AddProduct from "./views/AddProduct";
 import { useState } from "react";
@@ -8,10 +9,16 @@ import Footer from "./Components/Footer.jsx";
 import About from "./views/About.jsx";
 import Contact from "./views/Contact.jsx";
 import NotFound from "./views/NotFound.jsx";
+=======
+import ProductList from "./Components/ProductList.jsx";
+import Footer from "./Components/Footer.jsx";
+import { use, useState } from "react";
+>>>>>>> catalog
 function App() {
   const [Products, setProducts] = useState(products);
   const [cart, setCart] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+
 
   function handleDeleteProduct(productId) {
     setProducts((products) =>
@@ -48,9 +55,14 @@ function App() {
     product.name.toLocaleLowerCase().includes(searchInput.toLowerCase()),
   );
 
+<<<<<<< HEAD
   function addNewProduct(newProduct){
     setProducts((prevProducts)=>[...prevProducts,newProduct])
   }
+=======
+
+
+>>>>>>> catalog
   return (
        <BrowserRouter>
          <Header

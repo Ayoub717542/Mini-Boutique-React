@@ -28,7 +28,7 @@ function ProductList({ products, onDeleteProduct, onAddToCart }) {
           filteredProducts.map((p) => (
             <ProductCard
               key={p.id}
-              product={p}
+              product={p} 
               onDeleteProduct={onDeleteProduct}
               onAddToCart={onAddToCart}
             />
@@ -37,8 +37,12 @@ function ProductList({ products, onDeleteProduct, onAddToCart }) {
           <div className="notFound">
             <h3>No products found</h3>
           </div>
+<<<<<<< HEAD
             
         )}
+=======
+        )}  
+>>>>>>> catalog
       </div>
     </div>
   );
