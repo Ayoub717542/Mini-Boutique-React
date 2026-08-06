@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import SearchBar from "./SearchBar";
 function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
   const [showCart, setShowCart] = useState(false);
   const [open, setOpen] = useState(false);
@@ -22,6 +25,18 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
           </Link>
         </h1>
 
+        
+
+        <button
+          className="nav-toggle"
+          onClick={() => setOpen(!open)}
+          aria-label="Open Menu"
+        >
+          <i className="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <nav className={open ? "active" : ""}>
         <input
           type="text"
           id="search_input"
@@ -29,18 +44,13 @@ function Header({ cart, deleteProduct, searchInput, setSearchInput }) {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-
-        <button
-          className="nav-toggle"
-          onClick={() => setOpen(!open)}
-          aria-label="Ouvrir le menu"
-          aria-expanded="false"
-        >
-          <i className="fa-solid fa-bars"></i>
-        </button>
-      </div>
-      <nav className={open ? "active" : ""}>
-        <ul>
+        <div className="nav-links">
+          <Link to="/" onClick={()=> setOpen(false)}>Home</Link>
+          <Link className="addProduct" to="/addProduct" onClick={()=> setOpen(false)}>Add Product</Link>
+          <Link to="/about" onClick={()=> setOpen(false)}>About</Link>
+          <Link to="/contact" onClick={()=> setOpen(false)}>Contact</Link>
+        </div>
+        <div className="nav-icons">
           <div
             className="CartPannel"
             onClick={() => setShowCart(!showCart)}
