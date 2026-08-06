@@ -1,122 +1,101 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import products from "./data/products.json";
+<<<<<<< HEAD
+import Home from "./views/Home.jsx"
+import AddProduct from "./views/AddProduct";
+import { useState } from "react";
+import Header from "./Components/header.jsx";
+import Footer from "./Components/Footer.jsx";
+import About from "./views/About.jsx";
+import Contact from "./views/Contact.jsx";
+import NotFound from "./views/NotFound.jsx";
+=======
+import ProductList from "./Components/ProductList.jsx";
+import Footer from "./Components/Footer.jsx";
+import { use, useState } from "react";
+>>>>>>> catalog
 function App() {
-  const [count, setCount] = useState(0)
+  const [Products, setProducts] = useState(products);
+  const [cart, setCart] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
+
+  function handleDeleteProduct(productId) {
+    setProducts((products) =>
+      products.filter((product) => product.id !== productId),
+    );
+  }
+
+  function handleAddToCart(product) {
+    let newCart = cart.slice();
+    let exist = newCart.find(function (item) {
+      return item.id === product.id;
+    });
+    if (exist) {
+      exist.quantity = exist.quantity + 1;
+      exist.totalAmount = exist.quantity * exist.price;
+    } else {
+      let newProduct = {
+        id: product.id,
+        name: product.name,
+        type: product.type,
+        price: product.price,
+        quantity: 1,
+        totalAmount: product.price,
+      };
+      newCart.push(newProduct);
+    }
+    setCart(newCart);
+  }
+
+  function deleteProduct(id) {
+    setCart(cart.filter((item) => item.id !== id));
+  }
+  const filterProducts = Products.filter((product) =>
+    product.name.toLocaleLowerCase().includes(searchInput.toLowerCase()),
+  );
+
+<<<<<<< HEAD
+  function addNewProduct(newProduct){
+    setProducts((prevProducts)=>[...prevProducts,newProduct])
+  }
+=======
+
+
+>>>>>>> catalog
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+       <BrowserRouter>
+         <Header
+    cart={cart}
+    deleteProduct={deleteProduct}
+    searchInput={searchInput}
+    setSearchInput={setSearchInput}
+  />
+       <Routes>
+        <Route path="/" element=
+        {
+        <Home
+            cart={cart}
+            deleteProduct={deleteProduct}
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            filterProducts={filterProducts}
+            handleDeleteProduct={handleDeleteProduct}
+            handleAddToCart={handleAddToCart}>
+           
+        </Home>} >
+        </Route>
+        <Route path="/addProduct" element=
+        {
+          <AddProduct addNewProduct={addNewProduct}/>
+        }>
+        </Route>
+        <Route path="/about" element={<About/>} />
+        <Route path="/contact" element={<Contact/>} />
+         <Route path="*" element={<NotFound />} />  
+       </Routes>
+         <Footer />
+       </BrowserRouter>
+  );
 }
-
-export default App
+export default App;
